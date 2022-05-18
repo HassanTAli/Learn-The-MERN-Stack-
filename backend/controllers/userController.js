@@ -70,7 +70,7 @@ const loginUser = expressHandler(async (req, res) => {
 
 //@desc    Get user data
 //@route   GET /api/users/me
-//@access  public
+//@access  Private
 const getMe = expressHandler(async (req, res) => {
   res.json({ message: 'User data Display' })
 })
