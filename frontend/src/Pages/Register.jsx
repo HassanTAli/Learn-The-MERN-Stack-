@@ -53,9 +53,9 @@ const Register = () => {
         }
     }
 
-    if (isLoading) {
+    if (isLoading) (
         <Spinner />
-    }
+    )
 
     return <>
         <section className="heading">
