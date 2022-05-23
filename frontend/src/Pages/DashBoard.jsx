@@ -11,7 +11,7 @@ const DashBoard = () => {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { goals, isLoading, isError, isSuccess, message } = useSelector(
+  const { goals, isLoading, isError, message } = useSelector(
     (state) => state.goals
   )
 
