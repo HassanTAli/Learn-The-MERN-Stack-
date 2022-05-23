@@ -15,7 +15,6 @@ export const createGoal = createAsyncThunk(
   async (goalData, ThunkAPI) => {
     try {
       const token = ThunkAPI.getState().auth.user.token
-
       return await goalService.createGoal(goalData, token)
     } catch (error) {
       const message =
@@ -34,6 +33,23 @@ export const goalSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createGoal.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(createGoal.fulfilled, (state, { payload }) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.goals.push(payload)
+      })
+
+      .addCase(createGoal.rejected, (state, { payload }) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = payload
+      })
   },
 })
 
